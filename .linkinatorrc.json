@@ -1,0 +1,8 @@
+{
+  "path": "./dist",
+  "recurse": true,
+  "skip": ["^https://wa.me", "^tel:"],
+  "timeout": 10000,
+  "format": "csv",
+  "output": "./reports/link-check.csv"
+}
