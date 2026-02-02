@@ -130,7 +130,7 @@
       <!-- Logo Image - Hero Visual -->
       <div class="hero-logo mb-8">
         <img
-          src="/images/hero-logo.png"
+          src="/images/hero-logo.webp"
           alt="TMS Bike Towing"
           class="h-auto w-full max-w-2xl drop-shadow-2xl"
           width="800"

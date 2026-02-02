@@ -53,7 +53,14 @@ const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
       <div class="pointer-events-none absolute inset-y-0 right-0 hidden w-[55%] lg:block">
         <div class="relative h-full w-full">
           <img
-            src="/images/hero-tow-truck.jpg"
+            src="/images/hero-tow-truck.webp"
+            srcset="/images/hero-tow-truck-400.webp 400w,
+                    /images/hero-tow-truck-800.webp 800w,
+                    /images/hero-tow-truck.webp 1200w"
+            sizes="(max-width: 768px) 100vw, 55vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             alt="TMS Bike Towing truck - 24/7 cross-border towing service"
             class="h-full w-full object-contain object-right"
           />
@@ -83,8 +90,10 @@ const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
   <!-- Mobile background image -->
   <div class="pointer-events-none absolute inset-0 lg:hidden">
     <img
-      src="/images/hero-tow-truck.jpg"
+      src="/images/hero-tow-truck-400.webp"
       alt=""
+      loading="lazy"
+      decoding="async"
       class="h-full w-full object-cover object-center opacity-20"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>

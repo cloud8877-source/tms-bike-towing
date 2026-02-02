@@ -86,6 +86,9 @@ const pathWithoutLocale =
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Preload LCP image for faster rendering -->
+    <link rel="preload" as="image" href="/images/hero-tow-truck.webp" fetchpriority="high" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -111,13 +114,22 @@ const pathWithoutLocale =
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Material Symbols - deferred loading to avoid render blocking -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=optional"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=optional"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body
     class="min-h-screen text-[#101418] flex flex-col font-display selection:bg-primary selection:text-white overflow-x-hidden transition-colors duration-300 relative"

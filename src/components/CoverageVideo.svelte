@@ -116,7 +116,7 @@
         muted
         playsinline
         preload="metadata"
-        poster="/videos/coverage-route-poster.jpg"
+        poster="/videos/coverage-route-poster.webp"
         class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
         class:opacity-0={isMobile && !isHovering}
         aria-label="Animated map showing the Thailand to Singapore towing route"
@@ -126,7 +126,7 @@
 
       <!-- Thumbnail overlay - hidden on desktop, visible on mobile when not hovering -->
       <img
-        src="/videos/coverage-route-poster.jpg"
+        src="/videos/coverage-route-poster.webp"
         alt="Map showing TMS towing coverage route from Thailand through Malaysia to Singapore"
         class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
         class:opacity-0={!isMobile || isHovering}

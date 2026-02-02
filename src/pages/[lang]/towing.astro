@@ -51,7 +51,7 @@ const crossBorderRoutes = [
   <!-- Hero -->
   <section class="relative min-h-[50vh] flex items-center overflow-hidden bg-surface-off">
     <div class="absolute inset-0">
-      <img src="/images/hero-truck.jpg" alt="TMS Bike Towing truck" class="w-full h-full object-cover animate-slow-zoom" />
+      <img src="/images/hero-truck.webp" alt="TMS Bike Towing truck" class="w-full h-full object-cover animate-slow-zoom" loading="eager" />
       <div class="absolute inset-0 bg-gradient-to-r from-ink-black/90 via-ink-black/75 to-ink-black/40"></div>
     </div>
 
@@ -97,8 +97,8 @@ const crossBorderRoutes = [
       <!-- Pricing Image -->
       <div class="max-w-3xl mx-auto mb-16 reveal">
         <div class="card-premium overflow-hidden p-0 border-none shadow-xl">
-          <img src={`/images/thailand-package-${locale}.jpg`} alt="Thailand Package Pricing" class="w-full"
-               onerror="this.src='/images/thailand-package-en.jpg'" />
+          <img src={`/images/thailand-package-${locale}.webp`} alt="Thailand Package Pricing" class="w-full" loading="lazy"
+               onerror="this.src='/images/thailand-package-en.webp'" />
         </div>
       </div>
 
