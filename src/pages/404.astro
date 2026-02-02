@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Page Not Found | TMS Bike Towing" description="The page you're looking for doesn't exist.">
+  <section class="min-h-[60vh] flex items-center justify-center py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-6xl lg:text-8xl font-black text-primary mb-4">404</h1>
+      <h2 class="text-2xl lg:text-3xl font-bold mb-6">Page Not Found</h2>
+      <p class="text-gray-600 mb-8 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/en/"
+        class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-dark transition-colors"
+      >
+        <span class="material-symbols-outlined">home</span>
+        Go to Homepage
+      </a>
+    </div>
+  </section>
+</BaseLayout>
