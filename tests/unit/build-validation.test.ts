@@ -19,7 +19,7 @@ describe('Build Validation', () => {
         it(`has ${page}`, async () => {
           const path = join(DIST_DIR, locale, page);
           const content = await readFile(path, 'utf-8');
-          expect(content).toContain('<!doctype html>');
+          expect(content.toLowerCase()).toContain('<!doctype html>');
           expect(content).toContain(`lang="${locale}"`);
         });
       });
@@ -48,6 +48,6 @@ describe('Build Validation', () => {
       return count;
     };
     const total = await countHtml(DIST_DIR);
-    expect(total).toBe(73);
+    expect(total).toBe(74); // 73 pages + 404
   });
 });
