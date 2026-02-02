@@ -48,7 +48,7 @@
 ### 2.2 Output Structure
 
 - [ ] `dist/` directory created
-- [ ] 73 HTML files generated (17 pages x 4 locales + redirect pages + sitemap pages)
+- [ ] 74 HTML files generated (17 pages x 4 locales + redirect pages + sitemap pages)
 - [ ] Expected directory structure present:
   - [ ] `dist/en/` - English pages
   - [ ] `dist/ms/` - Bahasa Malaysia pages
