@@ -1,0 +1,48 @@
+---
+import { getLocaleFromUrl, type Locale } from '../i18n/utils';
+import { t } from '../i18n/translations';
+import ServicesScrollReveal from './ServicesScrollReveal.svelte';
+
+const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
+
+const services = [
+  {
+    id: 'towing',
+    icon: 'truck' as const,
+    title: t(locale, 'services.towing.title'),
+    description: t(locale, 'services.towing.description'),
+    image: '/images/service-towing.jpg',
+    class: 'col-span-1 md:col-span-2 md:row-span-1', // Wide card
+  },
+  {
+    id: 'insurance',
+    icon: 'shield' as const,
+    title: t(locale, 'services.insurance.title'),
+    description: t(locale, 'services.insurance.description'),
+    image: '/images/service-insurance.jpg',
+    class: 'col-span-1 md:col-span-1 md:row-span-2', // Tall card
+  },
+  {
+    id: 'coverage',
+    icon: 'map' as const, // Changed icon
+    title: t(locale, 'services.coverage.title'),
+    description: t(locale, 'services.coverage.description'),
+    image: '/images/service-coverage.jpg',
+    class: 'col-span-1 md:col-span-1 md:row-span-1', // Small card
+  },
+  {
+    id: 'emergency',
+    icon: 'clock' as const,
+    title: t(locale, 'trust.available_24'), // Using trust key for variety
+    description: t(locale, 'about.service3_desc'), // Using about key
+    image: '/images/hero-tow-truck.jpg',
+    class: 'col-span-1 md:col-span-1 md:row-span-1', // Small card
+  },
+];
+---
+
+<ServicesScrollReveal
+  client:visible
+  services={services}
+  sectionSubtitle={t(locale, 'services.section_subtitle')}
+/>

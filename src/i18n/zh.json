@@ -1,0 +1,186 @@
+{
+  "site": {
+    "title": "TMS Bike Towing - 24/7 跨境拖车服务",
+    "description": "泰国、马来西亚、新加坡之间的专业汽车和摩托车拖运服务。24小时道路救援、保险服务和跨境车辆运输。"
+  },
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "coverage": "服务范围",
+    "towing": "拖车",
+    "insurance": "保险",
+    "about": "关于我们"
+  },
+  "hero": {
+    "title": "24/7 跨境拖车服务",
+    "title_words": ["24/7", "跨境", "拖车服务"],
+    "subtitle": "泰国、马来西亚、新加坡之间的专业汽车和摩托车拖运服务。24小时道路救援。",
+    "carousel_label": "服务3个国家",
+    "service1": "拖车保险服务（新加坡、马来西亚、泰国）",
+    "service2": "泰国保险服务",
+    "service3": "汽车与摩托车跨国拖运服务",
+    "cta_whatsapp": "WhatsApp联系",
+    "cta_services": "查看服务",
+    "cta_assistance": "获取帮助",
+    "cta_note": "全天候服务 - 随时联系"
+  },
+  "services": {
+    "section_title": "我们的服务",
+    "section_subtitle": "泰国、马来西亚、新加坡专业拖车和保险服务",
+    "learn_more": "了解更多",
+    "towing": {
+      "title": "跨境拖车",
+      "description": "泰国、马来西亚、新加坡之间的专业汽车和摩托车运输。24小时紧急服务。"
+    },
+    "insurance": {
+      "title": "拖车保险",
+      "description": "保障计划让您在需要拖车时无需自付费用。三国均可使用。"
+    },
+    "coverage": {
+      "title": "全天候服务",
+      "description": "我们随时待命。白天黑夜随时联系我们获取道路救援。"
+    }
+  },
+  "trust": {
+    "available_24": "24小时服务",
+    "recommend": "100%推荐",
+    "licensed": "持牌且有保险",
+    "cross_border": "跨境专家"
+  },
+  "testimonials": {
+    "title": "客户评价"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "快速全面地了解我们服务的常见问题答案。",
+    "ctaText": "找不到您需要的答案？联系我们的",
+    "ctaLabel": "客服团队",
+    "ctaLink": "https://wa.me/66968873125",
+    "q1": "你们覆盖哪些地区？",
+    "a1": "我们在泰国、马来西亚和新加坡提供拖车和保险服务。我们的主要基地位于泰国沙道，靠近马来西亚边境。",
+    "q2": "如何预订拖车服务？",
+    "a2": "只需通过WhatsApp联系我们：+66 96 887 3125。我们24小时全天候服务。",
+    "q3": "有哪些保险套餐？",
+    "a3": "我们为汽车和摩托车提供强制和自愿保险，保障期限从8天到1年不等。",
+    "q4": "紧急情况下多快能响应？",
+    "a4": "在紧急情况下，我们会在联系后1至1.5小时内提供援助。"
+  },
+  "footer": {
+    "contact": "联系我们",
+    "address": "泰国宋卡府沙道县三纳康18号Janglon Soi 17, 90320",
+    "hours": "全天候营业",
+    "follow": "关注我们"
+  },
+  "about": {
+    "title": "关于 TMS Bike Towing",
+    "subtitle": "您在东南亚跨境拖运和保险的可信赖合作伙伴",
+    "who_title": "我们是谁",
+    "who_desc": "TMS Bike Towing 在泰国、马来西亚和新加坡提供专业的摩托车和汽车拖运服务。我们位于泰国沙道，靠近马来西亚边境，专注于跨境车辆运输和保险服务。我们全天候24小时、每周7天提供服务。",
+    "service1_title": "跨境拖运",
+    "service1_desc": "泰国、马来西亚和新加坡之间的专业车辆运输",
+    "service2_title": "保险服务",
+    "service2_desc": "汽车和摩托车的强制和自愿保险",
+    "service3_title": "全天候服务",
+    "service3_desc": "全天候紧急道路救援",
+    "contact_title": "联系我们",
+    "reach_us": "联系方式",
+    "phone": "电话",
+    "email": "电子邮件",
+    "location": "地址",
+    "follow_us": "关注我们",
+    "cta_title": "准备开始？",
+    "cta_subtitle": "今天联系我们讨论您的拖运或保险需求",
+    "contact_now": "立即联系"
+  },
+  "cta": {
+    "requestTow": "请求拖车",
+    "eyebrow": "获取帮助",
+    "title": "需要帮助？",
+    "subtitle": "随时联系我们。我们会说英语、泰语、马来语和中文。",
+    "available": "全天候服务，每周7天",
+    "callNow": "立即致电",
+    "whatsapp": "WhatsApp 联系"
+  },
+  "coverage": {
+    "title": "服务范围",
+    "subtitle": "我们在泰国、马来西亚和新加坡运营",
+    "base_note": "主要基地：泰国沙道（靠近马来西亚边境）",
+    "radar_heading": "覆盖三国",
+    "radar_tagline": "从泰国到新加坡的跨境摩托车拖运服务"
+  },
+  "insurance": {
+    "title": "保险服务",
+    "subtitle": "为您的汽车和摩托车提供强制和自愿保险保障",
+    "types_title": "保险类型",
+    "types_subtitle": "我们提供跨境旅行的强制和自愿保险",
+    "compulsory_title": "强制保险",
+    "compulsory_desc": "所有进入马来西亚的车辆都必须购买。承保事故医疗费用。",
+    "compulsory_note": "仅承保医疗费用",
+    "voluntary_title": "自愿保险",
+    "voluntary_desc": "第三方责任和车辆损坏保护的额外保障。",
+    "voluntary_note": "建议长途旅行购买",
+    "pricing_title": "保险价格",
+    "pricing_subtitle": "所有价格以马来西亚林吉特（RM）计算。联系我们获取当前价格。",
+    "motorcycle_title": "摩托车保险",
+    "car_title": "汽车保险",
+    "travel_title": "旅行保险",
+    "cta_title": "需要帮助选择保险？",
+    "cta_subtitle": "联系我们讨论最适合您旅行的保障方案。",
+    "get_quote": "获取报价"
+  },
+  "emergency": {
+    "whatsapp": "WhatsApp + 位置",
+    "call": "拨打热线",
+    "whatsappLabel": "发送带有GPS位置的WhatsApp消息",
+    "callLabel": "拨打TMS紧急热线",
+    "whatsappWithLocation": "紧急求助！我需要帮助。我的位置：{location}"
+  },
+  "seo": {
+    "routeTitle": "{origin}至{destination}拖车服务 | TMS",
+    "routeDescription": "从{origin}到{destination}的专业摩托车和汽车拖运服务。24/7跨境服务，提供文件支援。立即联系TMS。",
+    "cityTitle": "{city}拖车服务 | TMS Bike Towing",
+    "cityDescription": "{country}{city}的专业摩托车和汽车拖运服务。24/7紧急道路救援和跨境运输。立即联系TMS。",
+    "heroRoute": "从{origin}到{destination}的拖运服务",
+    "heroCity": "{city}拖运服务",
+    "serviceHighlights": "服务亮点",
+    "distance": "距离",
+    "estimatedTime": "预计时间",
+    "relatedRoutes": "相关路线与城市",
+    "needHelp": "需要拖车？",
+    "needHelpDesc": "随时联系我们获取紧急拖车服务。我们24/7全天候服务。",
+    "getQuote": "获取报价",
+    "callNow": "立即致电",
+    "ourBase": "我们的基地",
+    "borderCrossing": "边境口岸",
+    "countries": {
+      "thailand": "泰国",
+      "malaysia": "马来西亚",
+      "singapore": "新加坡"
+    },
+    "faq": {
+      "routeQ1": "从{origin}到{destination}需要多长时间？",
+      "routeA1": "行程通常需要{time}，具体取决于交通和边境手续。我们处理所有文件以使过境更顺畅。",
+      "routeQ2": "你们处理海关文件吗？",
+      "routeA2": "是的，我们协助处理所有跨境文件，包括泰国、马来西亚和新加坡的车辆许可证和海关清关。",
+      "cityQ1": "你们在{city}提供拖车服务吗？",
+      "cityA1": "是的，我们在{city}及周边地区提供24/7拖车服务。随时联系我们获取紧急援助。",
+      "cityQ2": "在{city}的响应速度有多快？",
+      "cityA2": "我们的目标是在大多数地区1-1.5小时内到达。响应时间可能因交通和位置而异。"
+    }
+  },
+  "towing": {
+    "title": "拖车服务",
+    "subtitle": "泰国、马来西亚和新加坡专业摩托车和汽车拖运服务",
+    "cta": "立即请求拖车",
+    "packages_title": "泰国拖车套餐",
+    "packages_subtitle": "出行前预购套餐，享受泰国境内无限次拖车服务",
+    "whats_included": "包含内容",
+    "important": "重要提示",
+    "crossborder_title": "跨境拖运",
+    "crossborder_subtitle": "我们在泰国、马来西亚和新加坡之间运输车辆。联系我们获取报价。",
+    "contact_for_quote": "联系获取报价",
+    "get_quote": "获取报价",
+    "cta_title": "需要紧急拖车？",
+    "cta_subtitle": "直接致电我们获取即时援助"
+  }
+}

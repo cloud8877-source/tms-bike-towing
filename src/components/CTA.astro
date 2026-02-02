@@ -1,0 +1,63 @@
+---
+import { getWhatsAppUrl, type Locale } from "../i18n/utils";
+import { t } from "../i18n/translations";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const phoneNumber = "+66 96 887 3125";
+const phoneLink = "tel:+66968873125";
+---
+
+<section class="py-16 md:py-24 lg:py-32 px-4 lg:px-8">
+  <div class="mx-auto max-w-4xl text-center card-3d-glass p-8 md:p-12">
+    <p
+      class="text-primary font-semibold uppercase tracking-wider text-sm mb-4 reveal"
+    >
+      {t(locale, "cta.eyebrow")}
+    </p>
+    <h2
+      class="text-balance text-3xl font-bold tracking-tight text-[#101418] md:text-4xl lg:text-5xl reveal"
+      style="letter-spacing: -0.02em; transition-delay: 100ms;"
+    >
+      {t(locale, "cta.title")}
+    </h2>
+    <p
+      class="mt-4 text-lg text-[#64748b] lg:text-xl reveal"
+      style="transition-delay: 150ms;"
+    >
+      {t(locale, "cta.subtitle")}
+    </p>
+
+    <div
+      class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4 reveal"
+      style="transition-delay: 200ms;"
+    >
+      <a
+        href={phoneLink}
+        class="group inline-flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-xl transition-all"
+      >
+        <span
+          class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform"
+          >call</span
+        >
+        {t(locale, "cta.callNow")}: {phoneNumber}
+      </a>
+
+      <a
+        href={getWhatsAppUrl(locale)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center justify-center gap-3 bg-white text-primary border border-primary/30 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/5 hover:-translate-y-0.5 hover:shadow-xl hover:border-primary/50 transition-all"
+      >
+        {t(locale, "cta.whatsapp")}
+        <span
+          class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform"
+          >arrow_forward</span
+        >
+      </a>
+    </div>
+  </div>
+</section>

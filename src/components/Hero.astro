@@ -1,0 +1,181 @@
+---
+import { getLocaleFromUrl, getWhatsAppUrl, type Locale } from "../i18n/utils";
+import { t } from "../i18n/translations";
+
+const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
+---
+
+<section class="relative w-full">
+  <div
+    class="relative overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center"
+  >
+    <!-- Background Image -->
+    <div
+      class="absolute inset-0 z-0 bg-cover bg-center"
+      style="background-image: url('/images/hero-truck.jpg');"
+    >
+    </div>
+    <!-- Light gradient overlay - white fading to transparent -->
+    <div
+      class="absolute inset-0 z-[1]"
+      style="background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.85) 40%, rgba(248, 250, 252, 0.3) 100%);"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 w-full max-w-[1200px] mx-auto px-4 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-[640px]">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-8 reveal-scale"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+            ></span>
+          </span>
+          24/7 Premium Response Team
+        </div>
+
+        <!-- Heading -->
+        <h1
+          class="text-text-main text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 reveal"
+          style="transition-delay: 100ms; letter-spacing: -0.02em;"
+        >
+          {t(locale, "hero.title")}
+          <br />
+          <span class="text-primary">
+            Guaranteed
+          </span> Support
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="text-text-secondary text-lg lg:text-xl leading-relaxed mb-10 max-w-lg reveal"
+          style="transition-delay: 200ms;"
+        >
+          {t(locale, "hero.subtitle")}
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 300ms;">
+          <a
+            href="tel:+66968873125"
+            class="group flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-dark hover:shadow-xl hover:-translate-y-0.5 transition-all relative overflow-hidden"
+          >
+            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">call</span>
+            Call Now
+          </a>
+          <a
+            href={getWhatsAppUrl(locale)}
+            target="_blank"
+            class="group flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#1fb855] hover:-translate-y-0.5 hover:shadow-lg transition-all shadow-sm"
+          >
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+
+        <!-- Trust Stats -->
+        <div
+          class="mt-14 flex flex-wrap gap-10 border-t border-gray-200 pt-8 reveal stagger-children"
+          style="transition-delay: 400ms;"
+          id="hero-stats"
+        >
+          <div>
+            <p class="text-3xl font-bold text-text-main tracking-tight" data-count-target="15" data-count-suffix="+">0</p>
+            <p class="text-sm text-text-secondary mt-1">Years Experience</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-text-main tracking-tight" data-count-target="2500" data-count-suffix="+" data-count-format="k">0</p>
+            <p class="text-sm text-text-secondary mt-1">Successful Tows</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-text-main tracking-tight" data-count-target="45" data-count-suffix="m">0</p>
+            <p class="text-sm text-text-secondary mt-1">Avg Response</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Count-up animation for stats
+  function initCountUp() {
+    const statsContainer = document.getElementById('hero-stats');
+    if (!statsContainer) return;
+
+    const countElements = statsContainer.querySelectorAll('[data-count-target]');
+    let hasAnimated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          countElements.forEach((el, index) => {
+            setTimeout(() => {
+              animateCount(el as HTMLElement);
+            }, index * 100);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsContainer);
+  }
+
+  function animateCount(el: HTMLElement) {
+    const target = parseInt(el.dataset.countTarget || '0', 10);
+    const suffix = el.dataset.countSuffix || '';
+    const format = el.dataset.countFormat;
+    const duration = 800;
+    const start = performance.now();
+
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = formatNumber(target, format) + suffix;
+      return;
+    }
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic for smooth deceleration
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(easeOut * target);
+
+      el.textContent = formatNumber(current, format) + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = formatNumber(target, format) + suffix;
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  function formatNumber(num: number, format?: string): string {
+    if (format === 'k' && num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    return num.toString();
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCountUp);
+  } else {
+    initCountUp();
+  }
+
+  // Re-init after Astro page transitions
+  document.addEventListener('astro:page-load', initCountUp);
+</script>

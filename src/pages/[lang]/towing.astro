@@ -1,0 +1,207 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  locales,
+  getLocaleFromUrl,
+  getWhatsAppUrl,
+  type Locale,
+} from "../../i18n/utils";
+import { t } from "../../i18n/translations";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = getLocaleFromUrl(Astro.url) as Locale;
+
+const thailandPackages = [
+  { duration: "7 Days", price: "THB 380" },
+  { duration: "14 Days", price: "THB 480" },
+  { duration: "30 Days", price: "THB 580" },
+  { duration: "1 Year", price: "THB 3,280" },
+];
+
+const packageFeatures = [
+  "Within Thailand coverage (based on purchased package)",
+  "24-hour standby service, available around the clock",
+  "Unlimited towing service during package period",
+  "Each tow covers up to 200 km free",
+  "Service to any navigable location in Thailand",
+  "Owner may ride along with tow truck",
+  "On-site assistance in case of accident",
+  "Emergency response within 1-1.5 hours",
+  "Hospital coordination if injured",
+];
+
+const importantNotes = [
+  "Package must be purchased BEFORE entering Thailand",
+  "Cannot be purchased after an accident has occurred",
+  "Additional distance: 10 THB/km (5 THB/km beyond 1,000 km)",
+];
+
+const crossBorderRoutes = [
+  { from: "🇹🇭", to: "🇲🇾", fromName: "Thailand", toName: "Malaysia" },
+  { from: "🇲🇾", to: "🇹🇭", fromName: "Malaysia", toName: "Thailand" },
+  { from: "🇸🇬", to: "🇹🇭", fromName: "Singapore", toName: "Thailand" },
+  { from: "🇲🇾", to: "🇸🇬", fromName: "Malaysia", toName: "Singapore" },
+];
+---
+
+<BaseLayout title={`${t(locale, "nav.towing")} - TMS Bike Towing`}>
+  <!-- Hero -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden bg-surface-off">
+    <div class="absolute inset-0">
+      <img src="/images/hero-truck.jpg" alt="TMS Bike Towing truck" class="w-full h-full object-cover animate-slow-zoom" />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink-black/90 via-ink-black/75 to-ink-black/40"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 py-24">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/70 text-sm font-medium mb-6 reveal">
+          <span class="material-symbols-outlined text-sm">local_shipping</span>
+          {t(locale, 'nav.towing')}
+        </div>
+        <h1 class="text-display text-5xl md:text-6xl text-white mb-6 reveal">
+          {t(locale, 'towing.title')}
+        </h1>
+        <p class="text-xl text-white/70 mb-10 reveal">
+          {t(locale, 'towing.subtitle')}
+        </p>
+        <a href={getWhatsAppUrl(locale)} target="_blank" rel="noopener noreferrer"
+           class="btn-whatsapp inline-flex items-center gap-3 press-effect reveal">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          {t(locale, 'towing.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="py-20" id="packages">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+          <span class="material-symbols-outlined text-sm">package</span>
+          Thailand Packages
+        </div>
+        <h2 class="text-3xl lg:text-5xl font-black max-w-3xl mx-auto text-text-main dark:text-white">
+          {t(locale, 'towing.packages_title')}
+        </h2>
+        <p class="text-lg mt-6 max-w-2xl mx-auto text-text-light dark:text-gray-400">
+          {t(locale, 'towing.packages_subtitle')}
+        </p>
+      </div>
+
+      <!-- Pricing Image -->
+      <div class="max-w-3xl mx-auto mb-16 reveal">
+        <div class="card-premium overflow-hidden p-0 border-none shadow-xl">
+          <img src={`/images/thailand-package-${locale}.jpg`} alt="Thailand Package Pricing" class="w-full"
+               onerror="this.src='/images/thailand-package-en.jpg'" />
+        </div>
+      </div>
+
+      <!-- Price Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-16 stagger-children">
+        {thailandPackages.map((pkg) => (
+          <div class="card-premium p-6 text-center shadow-md">
+            <div class="text-2xl font-black text-primary mb-1">{pkg.price}</div>
+            <div class="text-sm text-text-light dark:text-gray-400">{pkg.duration}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Features -->
+      <div class="max-w-3xl mx-auto">
+        <h3 class="text-2xl font-bold mb-8 text-text-main dark:text-white reveal">{t(locale, 'towing.whats_included')}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 stagger-children">
+          {packageFeatures.map((feature) => (
+            <div class="flex items-start gap-4 p-4 card-premium shadow-sm">
+              <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="text-text-light dark:text-gray-400 text-sm font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Important Notes -->
+        <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6 reveal">
+          <h4 class="font-bold text-amber-900 dark:text-amber-400 mb-3 flex items-center gap-2 text-sm">
+            <span class="material-symbols-outlined text-base">warning</span>
+            {t(locale, 'towing.important')}
+          </h4>
+          <ul class="space-y-2">
+            {importantNotes.map((note) => (
+              <li class="text-amber-800 dark:text-amber-300 text-sm flex items-start gap-2">
+                <span class="text-amber-500 mt-0.5">•</span>
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-Border -->
+  <section class="py-20 border-t border-gray-100 dark:border-gray-800">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <span class="material-symbols-outlined text-sm">public</span>
+            Cross-Border
+          </div>
+          <h2 class="text-3xl lg:text-5xl font-black mb-6 text-text-main dark:text-white">
+            {t(locale, 'towing.crossborder_title')}
+          </h2>
+          <p class="text-lg text-text-light dark:text-gray-400 mb-12">
+            {t(locale, 'towing.crossborder_subtitle')}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 stagger-children">
+          {crossBorderRoutes.map((route) => (
+            <div class="card-premium p-6 group">
+              <div class="flex items-center justify-center gap-4 mb-4">
+                <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all">{route.from}</span>
+                <span class="material-symbols-outlined text-text-light group-hover:text-primary transition-colors">arrow_forward</span>
+                <span class="text-3xl filter grayscale group-hover:grayscale-0 transition-all">{route.to}</span>
+              </div>
+              <h3 class="font-bold text-text-main dark:text-white">{route.fromName} → {route.toName}</h3>
+              <p class="text-sm text-text-light dark:text-gray-400 mt-1">{t(locale, 'towing.contact_for_quote')}</p>
+            </div>
+          ))}
+        </div>
+
+        <a href={getWhatsAppUrl(locale)} target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all reveal">
+          <span class="material-symbols-outlined">chat</span>
+          {t(locale, 'towing.get_quote')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-footer-dark">
+    <div class="container mx-auto px-4 sm:px-6 text-center text-white">
+      <div class="reveal">
+        <h2 class="text-3xl lg:text-5xl font-black mb-4">
+          {t(locale, 'towing.cta_title')}
+        </h2>
+        <p class="text-white/60 text-lg mb-8">
+          {t(locale, 'towing.cta_subtitle')}
+        </p>
+        <a href="tel:+66968873125" class="inline-flex items-center gap-3 bg-white text-primary px-10 py-5 rounded-xl font-black text-xl hover:scale-105 transition-all">
+          <span class="material-symbols-outlined">call</span>
+          +66 96 887 3125
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

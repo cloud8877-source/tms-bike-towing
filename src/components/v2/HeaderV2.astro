@@ -1,0 +1,147 @@
+---
+/**
+ * V2 Header - Sticky navigation with mobile hamburger menu
+ * Based on stitch_tms_landing_page mockups
+ */
+interface Props {
+  activePage?: "home" | "towing" | "insurance" | "about";
+}
+
+const { activePage = "home" } = Astro.props;
+
+const navLinks = [
+  { href: "/v2/", label: "Home", key: "home" },
+  { href: "/v2/towing", label: "Towing", key: "towing" },
+  { href: "/v2/insurance", label: "Insurance", key: "insurance" },
+  { href: "/v2/about", label: "About", key: "about" },
+];
+---
+
+<header
+  class="sticky top-0 z-50 w-full bg-white/20 backdrop-blur-xl border-b border-gray-100 transition-shadow duration-300"
+  id="header-v2"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/v2/" class="flex items-center gap-2 shrink-0">
+        <div class="w-10 h-10 bg-[#0052CC] rounded-lg flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-xl">two_wheeler</span>
+        </div>
+        <span class="font-bold text-lg text-gray-900 hidden sm:block">TMS Towing</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
+              activePage === link.key
+                ? "text-[#0052CC] bg-blue-50"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right Side: Language + CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Language Selector (placeholder) -->
+        <button
+          class="hidden sm:flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          aria-label="Language selector"
+        >
+          <span class="material-symbols-outlined text-lg">language</span>
+          <span>EN</span>
+          <span class="material-symbols-outlined text-sm">expand_more</span>
+        </button>
+
+        <!-- CTA Button -->
+        <a
+          href="tel:+66968873125"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 bg-[#0052CC] text-white text-sm font-medium rounded-full hover:bg-[#003d99] transition-colors duration-200 shadow-sm hover:shadow-md"
+        >
+          <span class="material-symbols-outlined text-lg">call</span>
+          <span>Request Tow</span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
+          id="mobile-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span class="material-symbols-outlined text-2xl text-gray-700" id="menu-icon">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="md:hidden fixed inset-x-0 top-16 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-lg transform transition-transform duration-300 -translate-y-full opacity-0 pointer-events-none"
+    id="mobile-menu"
+  >
+    <nav class="flex flex-col p-4 gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "px-4 py-3 text-base font-medium rounded-lg transition-colors",
+            activePage === link.key
+              ? "text-[#0052CC] bg-blue-50"
+              : "text-gray-700 hover:bg-gray-50",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <hr class="my-2 border-gray-200" />
+      <a
+        href="tel:+66968873125"
+        class="flex items-center justify-center gap-2 px-4 py-3 bg-[#0052CC] text-white font-medium rounded-lg"
+      >
+        <span class="material-symbols-outlined">call</span>
+        <span>Request Tow Now</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  let isOpen = false;
+
+  menuBtn?.addEventListener("click", () => {
+    isOpen = !isOpen;
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+      mobileMenu?.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
+      mobileMenu?.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+      if (menuIcon) menuIcon.textContent = "close";
+    } else {
+      mobileMenu?.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
+      mobileMenu?.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
+      if (menuIcon) menuIcon.textContent = "menu";
+    }
+  });
+
+  // Add shadow on scroll
+  const header = document.getElementById("header-v2");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      header?.classList.add("shadow-md");
+    } else {
+      header?.classList.remove("shadow-md");
+    }
+  });
+</script>

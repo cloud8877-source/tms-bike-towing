@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMS Bike Towing - Wireframe</title>
+    <style>
+      :root {
+        --hero: #0047ab;
+        --content: #f8fafc;
+        --dark: #0a1628;
+        --border: #e2e8f0;
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #3b82f6;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f1f5f9;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      /* Persistent Components */
+      .persistent {
+        background: white;
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .persistent.header {
+        border-color: var(--accent);
+        background: #eff6ff;
+      }
+
+      .persistent.footer {
+        border-color: var(--dark);
+        background: #f8fafc;
+        margin-top: 16px;
+        margin-bottom: 0;
+      }
+
+      .persistent-label {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .persistent-file {
+        font-size: 12px;
+        color: var(--muted);
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .persistent-elements {
+        font-size: 13px;
+        color: var(--muted);
+        margin-left: auto;
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+        background: white;
+        padding: 6px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .tab {
+        flex: 1;
+        padding: 12px 16px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+
+      .tab:hover {
+        background: #f1f5f9;
+      }
+
+      .tab.active {
+        background: var(--hero);
+        color: white;
+      }
+
+      .tab .route {
+        font-size: 11px;
+        opacity: 0.7;
+        display: block;
+        margin-top: 2px;
+        font-family: monospace;
+      }
+
+      /* Page Container */
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      /* Section Boxes */
+      .section {
+        background: white;
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 12px;
+        position: relative;
+      }
+
+      .section.hero {
+        background: linear-gradient(135deg, var(--hero) 0%, #1e40af 100%);
+        color: white;
+        border-color: var(--hero);
+      }
+
+      .section.hero .section-file,
+      .section.hero .badge {
+        opacity: 0.8;
+      }
+
+      .section.dark {
+        background: var(--dark);
+        color: white;
+        border-color: var(--dark);
+      }
+
+      .section.dark .section-file,
+      .section.dark .badge {
+        opacity: 0.7;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .section-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .section-file {
+        font-size: 11px;
+        font-family: monospace;
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.05);
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+
+      .section.hero .section-file,
+      .section.dark .section-file {
+        background: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .badge {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: #e0e7ff;
+        color: #3730a3;
+      }
+
+      .badge.fullwidth {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+
+      .badge.contained {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .badge.grid {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .badge.svelte {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .section.hero .badge,
+      .section.dark .badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      /* Elements List */
+      .elements {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .elements li {
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.04);
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: var(--muted);
+      }
+
+      .section.hero .elements li,
+      .section.dark .elements li {
+        background: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Fixed/Special indicator */
+      .fixed-indicator {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 10px;
+        background: #fef3c7;
+        color: #92400e;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .section.dark .fixed-indicator {
+        background: rgba(254, 243, 199, 0.9);
+      }
+
+      /* Legend */
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding: 16px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+      }
+
+      .legend-color.hero {
+        background: var(--hero);
+      }
+      .legend-color.content {
+        background: white;
+        border: 2px solid var(--border);
+      }
+      .legend-color.dark {
+        background: var(--dark);
+      }
+
+      /* WhatsApp Fixed */
+      .whatsapp-fixed {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        z-index: 100;
+      }
+
+      .whatsapp-label {
+        position: absolute;
+        right: 70px;
+        background: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 11px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        color: var(--text);
+      }
+
+      /* Section Order Number */
+      .order-num {
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background: var(--accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .section.hero .order-num {
+        background: white;
+        color: var(--hero);
+      }
+
+      .section.dark .order-num {
+        background: white;
+        color: var(--dark);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TMS Bike Towing - Wireframe</h1>
+      <p class="subtitle">Visual structure map of all pages and components</p>
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color hero"></div>
+          <span>Hero Section</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color content"></div>
+          <span>Content Section</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color dark"></div>
+          <span>Dark/CTA Section</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge fullwidth">Full-width</span>
+          <span>Edge-to-edge</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge contained">Contained</span>
+          <span>Max-width</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge svelte">Svelte</span>
+          <span>Interactive</span>
+        </div>
+      </div>
+
+      <!-- Persistent Header -->
+      <div class="persistent header">
+        <span class="persistent-label">Header</span>
+        <span class="persistent-file">Header.astro</span>
+        <span class="persistent-elements"
+          >Logo, 4 Nav Links, Language Switcher, CTA Button</span
+        >
+      </div>
+
+      <!-- Page Tabs -->
+      <nav class="tabs">
+        <button class="tab active" data-page="homepage">
+          Homepage
+          <span class="route">/en/</span>
+        </button>
+        <button class="tab" data-page="towing">
+          Towing
+          <span class="route">/en/towing</span>
+        </button>
+        <button class="tab" data-page="insurance">
+          Insurance
+          <span class="route">/en/insurance</span>
+        </button>
+        <button class="tab" data-page="about">
+          About
+          <span class="route">/en/about</span>
+        </button>
+      </nav>
+
+      <!-- Homepage -->
+      <div class="page active" id="homepage">
+        <div class="section hero">
+          <span class="order-num">1</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Hero</div>
+              <div class="section-meta">
+                <span class="section-file">HeroGsap.svelte</span>
+                <span class="badge fullwidth">Full-width</span>
+                <span class="badge svelte">client:load</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Badge (Live Status + 24/7 Response)</li>
+            <li>H1 with GSAP Stagger Animation</li>
+            <li>TMS Logo Image</li>
+            <li>Subtitle</li>
+            <li>2 CTA Buttons (WhatsApp, Services)</li>
+            <li>Country Flags Carousel</li>
+            <li>GSAP Background Animation</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">2</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Services</div>
+              <div class="section-meta">
+                <span class="section-file">Services.astro + ServicesAccordion.svelte</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge grid">2-col Grid</span>
+                <span class="badge svelte">client:visible</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Badge</li>
+            <li>Heading + Subtitle</li>
+            <li>3-item Accordion (left)</li>
+            <li>Service Image Carousel (right)</li>
+          </ul>
+        </div>
+
+        <div class="section dark">
+          <span class="order-num">3a</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">CoverageVideo</div>
+              <div class="section-meta">
+                <span class="section-file">CoverageVideo.svelte</span>
+                <span class="badge fullwidth">Full-width</span>
+                <span class="badge svelte">client:load</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Video Background (desktop)</li>
+            <li>Poster Image (mobile)</li>
+            <li>Gradient Overlay</li>
+            <li>Heading + Tagline (text overlay)</li>
+            <li>Square Aspect Ratio</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">3b</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Coverage Cards</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge grid">3-col Grid</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>3 Country Cards (TH, MY, SG)</li>
+            <li>Flag Emoji + Country Name</li>
+            <li>Cities List</li>
+            <li>Stagger Animation</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">4</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Trust Signals</div>
+              <div class="section-meta">
+                <span class="section-file">TrustSignals.astro</span>
+                <span class="badge contained">Contained</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>4 Stat Badges</li>
+            <li>Icon + Number + Label</li>
+            <li>Reveal Animation</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">5</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Testimonials</div>
+              <div class="section-meta">
+                <span class="section-file">Testimonials.svelte</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge svelte">client:visible</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Heading</li>
+            <li>Carousel Navigation</li>
+            <li>Testimonial Cards</li>
+            <li>Avatar + Name + Location</li>
+            <li>Star Rating + Quote</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">6</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">FAQ</div>
+              <div class="section-meta">
+                <span class="section-file">FAQ.svelte</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge svelte">client:visible</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Heading</li>
+            <li>4 Accordion Items</li>
+            <li>Question + Expand Icon</li>
+            <li>Slide Animation</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">7</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">CTA Block</div>
+              <div class="section-meta">
+                <span class="section-file">CTA.astro</span>
+                <span class="badge contained">Contained</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Badge (Get Help Now)</li>
+            <li>Heading + Subtitle</li>
+            <li>Call Now Button</li>
+            <li>WhatsApp Button</li>
+            <li>Gradient Background</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">8</span>
+          <span class="fixed-indicator">Mobile Only</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Mobile SOS Button</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge">Fixed Position</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Red Pulse Circle</li>
+            <li>SOS Icon</li>
+            <li>WhatsApp Link</li>
+            <li>lg:hidden</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Towing Page -->
+      <div class="page" id="towing">
+        <div class="section hero">
+          <span class="order-num">1</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Hero</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Badge (Towing Services)</li>
+            <li>H1 Title</li>
+            <li>Subtitle</li>
+            <li>WhatsApp CTA Button</li>
+            <li>hero-truck.jpg Background</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">2</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Thailand Packages</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Badge</li>
+            <li>Heading + Subtitle</li>
+            <li>Pricing Image (locale-aware)</li>
+            <li>4 Price Cards (7/14/30/365 days)</li>
+            <li>9 Feature Checkmarks</li>
+            <li>Important Notes (Amber box)</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">3</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Cross-Border Routes</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge grid">2-col Grid</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Badge</li>
+            <li>Heading + Subtitle</li>
+            <li>4 Route Cards</li>
+            <li>Flag Emoji Pairs</li>
+            <li>Contact for Quote</li>
+            <li>WhatsApp CTA</li>
+          </ul>
+        </div>
+
+        <div class="section dark">
+          <span class="order-num">4</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">CTA</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Heading</li>
+            <li>Subtitle</li>
+            <li>Call Button (large)</li>
+            <li>Phone Number</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Insurance Page -->
+      <div class="page" id="insurance">
+        <div class="section hero">
+          <span class="order-num">1</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Hero</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Badge (Insurance)</li>
+            <li>H1 Title</li>
+            <li>Subtitle</li>
+            <li>hero-truck.jpg Background</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">2</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Insurance Types</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge grid">2-col Grid</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Badge</li>
+            <li>Heading + Subtitle</li>
+            <li>Compulsory Insurance Card</li>
+            <li>Voluntary Insurance Card</li>
+            <li>Icon + Title + Desc + Note</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">3</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Pricing Images</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Heading</li>
+            <li>Motorcycle Pricing Image</li>
+            <li>Car Pricing Image</li>
+            <li>Travel Pricing Image</li>
+            <li>Stacked Layout</li>
+          </ul>
+        </div>
+
+        <div class="section dark">
+          <span class="order-num">4</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">CTA</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Heading</li>
+            <li>Subtitle</li>
+            <li>WhatsApp Button</li>
+            <li>Call Button</li>
+            <li>Radial Gradient Overlay</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- About Page -->
+      <div class="page" id="about">
+        <div class="section hero">
+          <span class="order-num">1</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Hero</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Badge (About)</li>
+            <li>H1 Title</li>
+            <li>Subtitle</li>
+            <li>hero-truck.jpg Background</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">2</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">About Content</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Badge (Who We Are)</li>
+            <li>Heading + Description</li>
+            <li>3 Service Highlight Cards</li>
+            <li>Icon + Title + Description</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <span class="order-num">3</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Contact</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge contained">Contained</span>
+                <span class="badge grid">2-col Grid</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Section Heading</li>
+            <li>Contact Methods Card</li>
+            <li>Phone, WhatsApp, Email links</li>
+            <li>Location Card</li>
+            <li>Address</li>
+            <li>Social Links (Facebook, TikTok)</li>
+          </ul>
+        </div>
+
+        <div class="section dark">
+          <span class="order-num">4</span>
+          <div class="section-header">
+            <div>
+              <div class="section-title">CTA</div>
+              <div class="section-meta">
+                <span class="section-file">Inline</span>
+                <span class="badge fullwidth">Full-width</span>
+              </div>
+            </div>
+          </div>
+          <ul class="elements">
+            <li>Heading</li>
+            <li>Subtitle</li>
+            <li>WhatsApp Button (only)</li>
+            <li>Radial Gradient Overlay</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Persistent Footer -->
+      <div class="persistent footer">
+        <span class="persistent-label">Footer</span>
+        <span class="persistent-file">Footer.astro</span>
+        <span class="persistent-elements"
+          >Brand + Tagline, Navigation Links, Regional Hubs (3 countries),
+          Bottom Bar (Copyright + Socials)</span
+        >
+      </div>
+
+      <!-- WhatsApp Fixed Button Indicator -->
+      <div class="whatsapp-fixed">
+        <span class="whatsapp-label">WhatsAppButton.svelte (client:load)</span>
+        WA
+      </div>
+    </div>
+
+    <script>
+      // Tab switching logic
+      const tabs = document.querySelectorAll(".tab");
+      const pages = document.querySelectorAll(".page");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active from all tabs and pages
+          tabs.forEach((t) => t.classList.remove("active"));
+          pages.forEach((p) => p.classList.remove("active"));
+
+          // Add active to clicked tab and corresponding page
+          tab.classList.add("active");
+          const pageId = tab.dataset.page;
+          document.getElementById(pageId).classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

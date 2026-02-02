@@ -1,0 +1,964 @@
+@import "tailwindcss";
+
+/* TMS Bike Towing - Premium Theme with Official Logo Colors */
+@theme {
+  /* Logo Gradient Colors - Vertical Blue Gradient */
+  --color-logo-gradient-top: #01C3FF;    /* Light Sky Blue - gradient start */
+  --color-logo-gradient-mid: #1170FF;    /* Electric Blue - gradient middle */
+  --color-logo-gradient-bottom: #211AFF; /* Deep Royal Blue - gradient end */
+
+  /* Logo Effects */
+  --color-logo-shadow: #06073D;          /* Midnight Navy - 3D drop shadow */
+  --color-logo-glow: #E2E2E2;            /* Light Gray - soft outer glow */
+  --color-logo-thai: #2121FF;            /* Primary blue for Thai script */
+
+  /* WhatsApp Brand Colors */
+  --color-whatsapp: #25D366;             /* WhatsApp brand green */
+  --color-whatsapp-hover: #1fb855;       /* Darker green for hover */
+
+  /* Brand Colors - Derived from Logo */
+  --color-primary: #1170FF;              /* Electric Blue - main brand color */
+  --color-primary-light: #01C3FF;        /* Sky Blue - lighter variant */
+  --color-primary-dark: #211AFF;         /* Royal Blue - darker variant */
+
+  /* Backgrounds */
+  --color-background-light: #ffffff;
+  --color-background-surface: #f8fafc;
+  --color-background-dark: #0a1628;
+  --color-footer-dark: #0a1628;
+
+  /* Text */
+  --color-text-main: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-light: #64748b;
+  --color-text-white: #ffffff;
+
+  /* Typography - Inter with tight letter-spacing */
+  --font-display: "Inter", sans-serif;
+
+  /* Animation Timing - Swift Response motion language */
+  --ease-swift: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-micro: 150ms;
+  --duration-reveal: 400ms;
+  --duration-settle: 300ms;
+  --stagger-delay: 60ms;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-icon-settle: icon-settle 0.4s var(--ease-swift) forwards;
+  --animate-pop-in: pop-in 0.4s var(--ease-swift) forwards;
+  --animate-slide-up: slide-up 0.4s var(--ease-swift) forwards;
+  --animate-gentle-float: gentle-float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Icon settle - bouncy entrance for icons */
+  @keyframes icon-settle {
+    0% {
+      transform: scale(0.8) translateY(8px);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.05) translateY(-2px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Pop-in - gentle scale entrance */
+  @keyframes pop-in {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    70% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Slide-up - content entrance */
+  @keyframes slide-up {
+    from {
+      transform: translateY(16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Shimmer - hover effect for cards */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Gentle float - subtle floating for decorative elements */
+  @keyframes gentle-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  /* Icon rotate - single 360 rotation */
+  @keyframes icon-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Button ripple effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  /* Border beam - animated gradient border effect */
+  @keyframes border-beam {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* GLOBAL BASE                                                                */
+/* -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--color-text-main);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* html.dark {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-white);
+} */
+
+
+/* -------------------------------------------------------------------------- */
+/* GLOBAL BACKGROUND TEXTURE                                                   */
+/* -------------------------------------------------------------------------- */
+
+/* 
+   NOTE: Static background removed in favor of "Living Geography" 
+   animated blobs in BaseLayout.astro 
+*/
+
+
+/* -------------------------------------------------------------------------- */
+/* CUSTOM UTILITIES - 3D GLASS SYSTEM                                         */
+/* -------------------------------------------------------------------------- */
+
+/* The Premium 3D Glass Card */
+.card-3d-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  border-left: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.07),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+.card-3d-glass:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+    0 20px 40px 0 rgba(31, 38, 135, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Jewel Icon Effect */
+.icon-jewel {
+  background: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 1),
+    inset -2px -2px 4px rgba(17, 112, 255, 0.1),
+    0 4px 12px rgba(17, 112, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+}
+
+/* Crystal Text Gradient */
+.text-crystal {
+  background: linear-gradient(135deg, #101418 30%, #1170FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(17, 112, 255, 0.05));
+}
+
+/* -------------------------------------------------------------------------- */
+/* TMS LOGO STYLES                                                            */
+/* -------------------------------------------------------------------------- */
+
+/* Main Text Gradient - matches logo exactly */
+.tms-logo-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--color-logo-gradient-top) 0%,
+    var(--color-logo-gradient-mid) 50%,
+    var(--color-logo-gradient-bottom) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 3D Drop Shadow Effect - matches logo extrusion */
+.tms-logo-shadow {
+  filter: drop-shadow(2px 4px 0px var(--color-logo-shadow));
+}
+
+/* Combined logo text style */
+.tms-logo-text {
+  background: linear-gradient(
+    to bottom,
+    var(--color-logo-gradient-top) 0%,
+    var(--color-logo-gradient-mid) 50%,
+    var(--color-logo-gradient-bottom) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(2px 4px 0px var(--color-logo-shadow));
+}
+
+/* Background gradient using logo colors */
+.bg-tms-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--color-logo-gradient-top) 0%,
+    var(--color-logo-gradient-mid) 50%,
+    var(--color-logo-gradient-bottom) 100%
+  );
+}
+
+/* Horizontal gradient variant */
+.bg-tms-gradient-horizontal {
+  background: linear-gradient(
+    to right,
+    var(--color-logo-gradient-top) 0%,
+    var(--color-logo-gradient-mid) 50%,
+    var(--color-logo-gradient-bottom) 100%
+  );
+}
+
+/* Blue glow with logo colors */
+.blue-glow {
+  box-shadow: 0 0 20px rgba(17, 112, 255, 0.25);
+}
+
+.premium-shadow {
+  box-shadow:
+    0 4px 20px -4px rgba(17, 112, 255, 0.08),
+    0 2px 8px -2px rgba(17, 112, 255, 0.04);
+}
+
+.card-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Layered soft shadow - Stripe/Linear style */
+.shadow-soft {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-soft-lg {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.02);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------------------------------------------------------------- */
+/* MATERIAL SYMBOLS                                                           */
+/* -------------------------------------------------------------------------- */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  vertical-align: middle;
+}
+
+.fill-icon {
+  font-variation-settings: "FILL" 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ANIMATION CLASSES                                                          */
+/* -------------------------------------------------------------------------- */
+
+/* Base reveal - slide up */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-swift),
+    transform var(--duration-reveal) var(--ease-swift);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reveal left - slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-swift),
+    transform var(--duration-reveal) var(--ease-swift);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reveal scale - zoom in */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity var(--duration-reveal) var(--ease-swift),
+    transform var(--duration-reveal) var(--ease-swift);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger children utility - cascading delays */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-swift),
+    transform var(--duration-reveal) var(--ease-swift);
+}
+
+.stagger-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+.stagger-children > *:nth-child(2) {
+  transition-delay: 60ms;
+}
+.stagger-children > *:nth-child(3) {
+  transition-delay: 120ms;
+}
+.stagger-children > *:nth-child(4) {
+  transition-delay: 180ms;
+}
+.stagger-children > *:nth-child(5) {
+  transition-delay: 240ms;
+}
+.stagger-children > *:nth-child(6) {
+  transition-delay: 300ms;
+}
+
+/* Icon animations on reveal */
+.icon-settle {
+  opacity: 0;
+  transform: scale(0.8) translateY(8px);
+}
+
+.revealed .icon-settle,
+.stagger-children.revealed .icon-settle {
+  animation: icon-settle 0.4s var(--ease-swift) forwards;
+}
+
+/* Pop-in animation class */
+.pop-in {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.revealed .pop-in,
+.stagger-children.revealed .pop-in {
+  animation: pop-in 0.4s var(--ease-swift) forwards;
+}
+
+/* Icon rotate on reveal */
+.icon-rotate-reveal {
+  transition: transform 0.6s var(--ease-swift);
+}
+
+.revealed .icon-rotate-reveal {
+  transform: rotate(360deg);
+}
+
+/* Gentle floating animation */
+.animate-gentle-float {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ACCESSIBILITY - Reduced Motion                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-scale,
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .icon-settle,
+  .pop-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* MICRO-INTERACTIONS - Premium hover effects                                 */
+/* -------------------------------------------------------------------------- */
+
+/* Card hover lift effect */
+.card-hover {
+  transition: transform var(--duration-settle) var(--ease-swift),
+              box-shadow var(--duration-settle) var(--ease-swift);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.02);
+}
+
+/* Button scale + shadow lift */
+.btn-hover {
+  transition: transform var(--duration-micro) var(--ease-swift),
+              box-shadow var(--duration-micro) var(--ease-swift),
+              background-color var(--duration-micro) var(--ease-swift);
+}
+
+.btn-hover:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 4px 12px rgba(17, 112, 255, 0.25);
+}
+
+.btn-hover:active {
+  transform: scale(0.98);
+}
+
+/* Link underline slide effect */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width var(--duration-settle) var(--ease-swift);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Focus ring glow effect for inputs */
+.input-focus-glow {
+  transition: box-shadow var(--duration-micro) var(--ease-swift),
+              border-color var(--duration-micro) var(--ease-swift);
+}
+
+.input-focus-glow:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(17, 112, 255, 0.12);
+}
+
+/* Nav indicator slide */
+.nav-indicator {
+  position: relative;
+}
+
+.nav-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transform: translateX(-50%);
+  transition: width var(--duration-settle) var(--ease-swift);
+}
+
+.nav-indicator:hover::after,
+.nav-indicator.active::after {
+  width: 100%;
+}
+
+/* Icon hover rotate */
+.icon-hover-rotate {
+  transition: transform var(--duration-settle) var(--ease-swift);
+}
+
+.icon-hover-rotate:hover {
+  transform: rotate(15deg);
+}
+
+/* Scale on hover for images/icons */
+.hover-scale {
+  transition: transform var(--duration-settle) var(--ease-swift);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* -------------------------------------------------------------------------- */
+/* TYPOGRAPHY REFINEMENTS                                                      */
+/* -------------------------------------------------------------------------- */
+
+/* Tighter heading letter-spacing */
+h1, h2, h3, h4, h5, h6,
+.heading {
+  letter-spacing: -0.02em;
+}
+
+/* Section titles */
+.section-title {
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* Subtle gradient text for headings */
+.text-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    var(--color-text-main) 0%,
+    var(--color-text-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* -------------------------------------------------------------------------- */
+/* COMPONENT CLASSES                                                          */
+/* -------------------------------------------------------------------------- */
+
+.btn-primary {
+  @apply bg-primary text-white font-semibold rounded-xl transition-all hover:bg-primary-dark hover:shadow-lg active:scale-[0.98];
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple effect container */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
+}
+
+.btn-primary:active::after {
+  transform: scale(2);
+  opacity: 1;
+  transition: transform 0.1s ease-out;
+}
+
+.btn-secondary {
+  @apply bg-white text-primary font-semibold border border-gray-200 rounded-xl transition-all hover:bg-gray-50 hover:border-primary/30 active:scale-[0.98];
+  letter-spacing: -0.01em;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.1);
+}
+
+.btn-outline-white {
+  @apply bg-transparent text-white font-semibold border border-white/30 rounded-xl transition-all hover:bg-white/10 active:scale-[0.98];
+  letter-spacing: -0.01em;
+}
+
+.btn-outline-white:hover {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.card-premium {
+  @apply bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: transform var(--duration-settle) var(--ease-swift),
+              box-shadow var(--duration-settle) var(--ease-swift),
+              border-color var(--duration-settle) var(--ease-swift);
+}
+
+.card-premium:hover {
+  transform: translateY(-2px);
+  border-color: rgba(17, 112, 255, 0.2);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.02);
+}
+
+/* Glass card variant */
+.card-glass {
+  @apply rounded-2xl border border-white/20;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform var(--duration-settle) var(--ease-swift),
+              box-shadow var(--duration-settle) var(--ease-swift);
+}
+
+.card-glass:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 12px 24px rgba(0, 0, 0, 0.04);
+}
+
+/* -------------------------------------------------------------------------- */
+/* BORDER BEAM EFFECT                                                          */
+/* -------------------------------------------------------------------------- */
+
+.border-beam-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.border-beam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.border-beam::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    var(--color-primary-light) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  offset-path: path("M 0 0 L 100% 0 L 100% 100% L 0 100% Z");
+  offset-rotate: 0deg;
+  animation: border-beam 6s linear infinite;
+  opacity: 0.5;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .border-beam::before {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* HERO & SECTION OVERLAYS                                                     */
+/* -------------------------------------------------------------------------- */
+
+/* Subtle gradient overlay for hero sections */
+.hero-gradient-overlay {
+  position: relative;
+}
+
+.hero-gradient-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 112, 255, 0.03) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(17, 112, 255, 0.02) 100%
+  );
+  pointer-events: none;
+}
+
+/* Radial gradient accent */
+.gradient-accent {
+  position: relative;
+}
+
+.gradient-accent::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -25%;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(1, 195, 255, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Section divider with gradient */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 20%,
+    rgba(0, 0, 0, 0.08) 80%,
+    transparent 100%
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* ENHANCED SCROLL ANIMATIONS                                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Fade up with longer travel */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-swift),
+              transform 0.6s var(--ease-swift);
+}
+
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in from sides */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s var(--ease-swift),
+              transform 0.6s var(--ease-swift);
+}
+
+.fade-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s var(--ease-swift),
+              transform 0.6s var(--ease-swift);
+}
+
+.fade-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale fade */
+.scale-fade {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s var(--ease-swift),
+              transform 0.5s var(--ease-swift);
+}
+
+.scale-fade.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered grid animation */
+.stagger-grid {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-swift),
+              transform 0.5s var(--ease-swift);
+}
+
+.stagger-grid.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grid items (applied via data-stagger attribute) */
+[data-stagger="1"] { transition-delay: 0ms; }
+[data-stagger="2"] { transition-delay: 50ms; }
+[data-stagger="3"] { transition-delay: 100ms; }
+[data-stagger="4"] { transition-delay: 150ms; }
+[data-stagger="5"] { transition-delay: 200ms; }
+[data-stagger="6"] { transition-delay: 250ms; }
+[data-stagger="7"] { transition-delay: 300ms; }
+[data-stagger="8"] { transition-delay: 350ms; }
+
+/* Respect reduced motion for all new animations */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-left,
+  .fade-right,
+  .scale-fade,
+  .stagger-grid {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card-hover:hover,
+  .btn-hover:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+
+  .link-underline::after {
+    width: 100%;
+    transition: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* LIVING GEOGRAPHY BACKGROUND SYSTEM                                          */
+/* -------------------------------------------------------------------------- */
+
+/* Layer 1: Cinematic Grain */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Layer 2: Abstract Topographic Map */
+.bg-topo {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23334155' stroke-width='0.5' d='M0,50 Q25,30 50,50 T100,50 M0,70 Q25,50 50,70 T100,70 M0,30 Q25,10 50,30 T100,30' opacity='0.5'/%3E%3Cpath fill='none' stroke='%23334155' stroke-width='0.5' d='M0,20 Q40,40 60,20 T100,20 M0,80 Q40,60 60,80 T100,80' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: cover;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Layer 3: Breathing Blobs */
+@keyframes blob-bounce {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.blob {
+  position: absolute;
+  filter: blur(80px);
+  border-radius: 50%;
+  animation: blob-bounce 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+}
+
+.blob-delay-1 { animation-delay: 0s; }
+.blob-delay-2 { animation-delay: 2s; }
+.blob-delay-3 { animation-delay: 4s; }

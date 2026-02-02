@@ -1,0 +1,116 @@
+---
+// ScrollAnimations - Handles reveal animations on scroll
+---
+
+<script>
+  // Intersection Observer configuration
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.1
+  };
+
+  // Create observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Optionally unobserve after animation
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Initialize animations on DOM ready
+  function initScrollAnimations() {
+    // Observe all reveal elements (including new animation classes)
+    const revealElements = document.querySelectorAll(
+      '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children, .fade-up, .fade-left, .fade-right, .scale-fade, .stagger-grid'
+    );
+
+    revealElements.forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Create observer for in-view animations
+  const inViewObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // Unobserve after triggering (one-time animation)
+        inViewObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Initialize in-view animations
+  function initInViewAnimations() {
+    const inViewElements = document.querySelectorAll(
+      '.fade-up, .fade-left, .fade-right, .scale-fade, .stagger-grid'
+    );
+
+    inViewElements.forEach(el => {
+      inViewObserver.observe(el);
+    });
+  }
+
+  // Header scroll effect
+  function initHeaderScroll() {
+    const header = document.querySelector('header');
+    const nav = header?.querySelector('.glass-nav');
+    
+    if (!nav) return;
+
+    let lastScroll = 0;
+    let ticking = false;
+
+    function updateHeader() {
+      const currentScroll = window.scrollY;
+      
+      // Add scrolled class
+      if (currentScroll > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      // Hide/show header on scroll direction (optional)
+      // if (currentScroll > lastScroll && currentScroll > 100) {
+      //   header.style.transform = 'translateY(-100%)';
+      // } else {
+      //   header.style.transform = 'translateY(0)';
+      // }
+
+      lastScroll = currentScroll;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollAnimations();
+      initInViewAnimations();
+      initHeaderScroll();
+    });
+  } else {
+    initScrollAnimations();
+    initInViewAnimations();
+    initHeaderScroll();
+  }
+
+  // Re-init after Astro page transitions (if using View Transitions)
+  document.addEventListener('astro:page-load', () => {
+    initScrollAnimations();
+    initInViewAnimations();
+    initHeaderScroll();
+  });
+</script>

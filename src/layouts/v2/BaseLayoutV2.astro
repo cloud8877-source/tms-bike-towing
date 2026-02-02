@@ -1,0 +1,86 @@
+---
+/**
+ * V2 Base Layout - Simplified layout without i18n
+ * For design comparison with mockups
+ */
+import HeaderV2 from "../../components/v2/HeaderV2.astro";
+import FooterV2 from "../../components/v2/FooterV2.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.svelte";
+import ScrollAnimations from "../../components/ScrollAnimations.astro";
+import "../../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePage?: "home" | "towing" | "insurance" | "about";
+}
+
+const {
+  title = "TMS Bike Towing - 24/7 Cross-Border Towing Service",
+  description = "Professional car & bike towing service between Thailand, Malaysia, and Singapore.",
+  activePage = "home",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="theme-color" content="#0052CC" />
+
+    <!-- Fonts: Public Sans & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- V2 specific styles -->
+    <style is:global>
+      /* V2 Design System Colors */
+      :root {
+        --v2-primary: #0052CC;
+        --v2-primary-dark: #003d99;
+        --v2-primary-light: #4A90D9;
+        --v2-accent-gold: #D4AF37;
+        --v2-dark-bg: #0F1723;
+        --v2-footer-dark: #0A121E;
+        --v2-light-bg: #F5F7F8;
+        --v2-white: #ffffff;
+        --v2-text-dark: #1d1d1f;
+        --v2-text-body: #424245;
+        --v2-text-muted: #86868b;
+        --v2-success: #22c55e;
+        --v2-error: #ef4444;
+      }
+
+      /* V2 Typography */
+      .v2-font {
+        font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen text-gray-800 flex flex-col font-[Public_Sans] overflow-x-hidden">
+    <HeaderV2 activePage={activePage} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <FooterV2 />
+
+    <WhatsAppButton client:load locale="en" />
+    <ScrollAnimations />
+  </body>
+</html>

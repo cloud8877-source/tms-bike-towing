@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: 'towing' | 'insurance' | 'coverage';
+  href?: string;
+  class?: string;
+}
+
+const { title, description, icon, href, class: className } = Astro.props;
+
+const icons = {
+  towing: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />`,
+  insurance: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+  coverage: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`
+};
+
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "group relative glass-panel rounded-2xl p-8 transition-all duration-500 overflow-hidden",
+    href && "hover:-translate-y-2 cursor-pointer hover:shadow-xl",
+    className
+  ]}
+>
+  <!-- Hover Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+  <!-- Icon -->
+  <div class="relative w-16 h-16 mb-6 rounded-2xl bg-surface-off border border-line-strong flex items-center justify-center group-hover:border-primary/50 transition-colors duration-500">
+    <div class="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+    <svg class="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[icon]} />
+  </div>
+
+  <!-- Content -->
+  <h3 class="relative text-2xl font-bold text-ink-black mb-3 group-hover:text-primary transition-colors duration-300">{title}</h3>
+  <p class="relative text-ink-muted leading-relaxed group-hover:text-ink-body transition-colors duration-300">{description}</p>
+
+  {href && (
+    <div class="relative mt-6 flex items-center gap-2 text-sm font-bold text-primary group-hover:translate-x-2 transition-transform duration-300">
+      <span class="uppercase tracking-widest">Explore</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </div>
+  )}
+</Tag>

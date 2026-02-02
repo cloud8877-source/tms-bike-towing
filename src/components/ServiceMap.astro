@@ -1,0 +1,75 @@
+---
+import { t } from '../i18n/translations';
+import { getLocaleFromUrl, type Locale } from '../i18n/utils';
+
+const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
+
+const nodes = [
+  {
+    country: "THAILAND",
+    status: "Operational",
+    response: "< 45m",
+    x: 30,
+    y: 30
+  },
+  {
+    country: "MALAYSIA",
+    status: "Patrol Active",
+    response: "< 30m",
+    x: 50,
+    y: 60
+  },
+  {
+    country: "SINGAPORE",
+    status: "Ready",
+    response: "< 20m",
+    x: 60,
+    y: 85
+  }
+];
+---
+
+<section class="py-24 bg-surface-white relative overflow-hidden border-y border-line-subtle">
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-ink-black mb-6">
+        Cross-Border <span class="text-primary">Network</span>
+      </h2>
+      <p class="text-xl text-ink-muted font-light leading-relaxed">
+        Strategically positioned recovery units across Thailand, Malaysia, and Singapore.
+      </p>
+    </div>
+
+    <!-- Map Visualization Container -->
+    <div class="relative w-full aspect-[4/3] md:aspect-[16/9] bg-surface-off rounded-3xl border border-line-strong overflow-hidden shadow-inner">
+      <!-- Abstract Grid Background -->
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,var(--color-line-subtle)_1px,transparent_1px),linear-gradient(180deg,var(--color-line-subtle)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50"></div>
+      
+      <!-- Nodes -->
+      {nodes.map((node) => (
+        <div
+          class="absolute group"
+          style={`top: ${node.y}%; left: ${node.x}%; transform: translate(-50%, -50%);`}
+        >
+          <!-- Pulsing Marker -->
+          <div class="relative flex items-center justify-center">
+             <div class="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping opacity-75"></div>
+             <div class="relative w-4 h-4 bg-primary rounded-full border-2 border-white shadow-md z-10"></div>
+          </div>
+
+          <!-- Hover Card -->
+          <div class="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 w-48 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-2 group-hover:translate-y-0 z-20">
+            <div class="bg-surface-white rounded-xl p-4 shadow-xl border border-line-strong text-center">
+              <div class="font-bold text-ink-black mb-1">{node.country}</div>
+              <div class="text-xs text-ink-muted uppercase tracking-wider font-bold mb-2">{node.status}</div>
+              <div class="text-xs text-ink-muted">Avg Response: <span class="font-bold text-primary">{node.response}</span></div>
+            </div>
+            <!-- Arrow -->
+            <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface-white border-b border-r border-line-strong rotate-45"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

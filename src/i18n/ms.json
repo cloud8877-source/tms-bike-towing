@@ -1,0 +1,186 @@
+{
+  "site": {
+    "title": "TMS Bike Towing - Perkhidmatan Tunda 24/7 Merentas Sempadan",
+    "description": "Perkhidmatan tunda kereta & motosikal profesional antara Thailand, Malaysia, dan Singapura. Bantuan tepi jalan 24 jam, perkhidmatan insurans, dan pengangkutan kenderaan merentas sempadan."
+  },
+  "nav": {
+    "home": "Utama",
+    "services": "Perkhidmatan",
+    "coverage": "Liputan",
+    "towing": "Tunda",
+    "insurance": "Insurans",
+    "about": "Tentang Kami"
+  },
+  "hero": {
+    "title": "Tunda 24/7 Merentas Sempadan",
+    "title_words": ["Tunda 24/7", "Merentas", "Sempadan"],
+    "subtitle": "Perkhidmatan tunda kereta & motosikal profesional antara Thailand, Malaysia, dan Singapura. Bantuan tepi jalan 24 jam.",
+    "carousel_label": "Melayani 3 Negara",
+    "service1": "Insurans Tunda (Singapura, Malaysia, Thailand)",
+    "service2": "Insurans Thailand",
+    "service3": "Perkhidmatan tunda kereta & motosikal",
+    "cta_whatsapp": "WhatsApp Sekarang",
+    "cta_services": "Lihat Perkhidmatan",
+    "cta_assistance": "Dapatkan Bantuan",
+    "cta_note": "Tersedia 24/7 - Hubungi bila-bila masa"
+  },
+  "services": {
+    "section_title": "Perkhidmatan Kami",
+    "section_subtitle": "Perkhidmatan tunda dan insurans profesional di Thailand, Malaysia, dan Singapura",
+    "learn_more": "Ketahui Lebih",
+    "towing": {
+      "title": "Tunda Merentas Sempadan",
+      "description": "Pengangkutan kereta dan motosikal profesional antara Thailand, Malaysia, dan Singapura. Tersedia 24 jam untuk kecemasan."
+    },
+    "insurance": {
+      "title": "Insurans Tunda",
+      "description": "Pelan perlindungan supaya anda tidak perlu bayar sendiri bila perlukan tunda. Tersedia untuk ketiga-tiga negara."
+    },
+    "coverage": {
+      "title": "Tersedia 24/7",
+      "description": "Kami sentiasa buka. Hubungi kami bila-bila masa siang atau malam untuk bantuan tepi jalan."
+    }
+  },
+  "trust": {
+    "available_24": "Perkhidmatan 24 Jam",
+    "recommend": "100% Disyorkan",
+    "licensed": "Berlesen & Diinsuranskan",
+    "cross_border": "Pakar Merentas Sempadan"
+  },
+  "testimonials": {
+    "title": "Apa Kata Pelanggan Kami"
+  },
+  "faq": {
+    "title": "Soalan Lazim",
+    "subtitle": "Temui jawapan pantas dan komprehensif kepada soalan lazim tentang perkhidmatan kami.",
+    "ctaText": "Tidak jumpa apa yang anda cari? Hubungi",
+    "ctaLabel": "pasukan sokongan pelanggan kami",
+    "ctaLink": "https://wa.me/66968873125",
+    "q1": "Kawasan mana yang anda liputi?",
+    "a1": "Kami menyediakan perkhidmatan tunda dan insurans di seluruh Thailand, Malaysia, dan Singapura. Pangkalan utama kami di Sadao, Thailand, berhampiran sempadan Malaysia.",
+    "q2": "Bagaimana untuk menempah perkhidmatan tunda?",
+    "a2": "Hubungi kami melalui WhatsApp di +66 96 887 3125. Kami beroperasi 24 jam sehari, 7 hari seminggu.",
+    "q3": "Pakej insurans apa yang tersedia?",
+    "a3": "Kami menawarkan insurans wajib dan sukarela untuk kereta dan motosikal, dengan pelbagai tempoh liputan dari 8 hari hingga 1 tahun.",
+    "q4": "Berapa cepat anda boleh bertindak balas dalam kecemasan?",
+    "a4": "Dalam situasi kecemasan, kami berusaha memberikan bantuan dalam masa 1 hingga 1.5 jam selepas menghubungi kami."
+  },
+  "footer": {
+    "contact": "Hubungi Kami",
+    "address": "18 Janglon Soi 17 Samnak Kham, Daerah Sadao, Songkhla 90320, Thailand",
+    "hours": "Buka 24/7",
+    "follow": "Ikuti Kami"
+  },
+  "about": {
+    "title": "Tentang TMS Bike Towing",
+    "subtitle": "Rakan kongsi dipercayai untuk tunda dan insurans merentas sempadan di Asia Tenggara",
+    "who_title": "Siapa Kami",
+    "who_desc": "TMS Bike Towing menyediakan perkhidmatan tunda motosikal dan kereta profesional di Thailand, Malaysia, dan Singapura. Berpangkalan di Sadao, Thailand berhampiran sempadan Malaysia, kami pakar dalam pengangkutan kenderaan merentas sempadan dan perkhidmatan insurans. Kami tersedia 24 jam sehari, 7 hari seminggu.",
+    "service1_title": "Tunda Merentas Sempadan",
+    "service1_desc": "Pengangkutan kenderaan profesional antara Thailand, Malaysia, dan Singapura",
+    "service2_title": "Perkhidmatan Insurans",
+    "service2_desc": "Insurans wajib dan sukarela untuk kereta dan motosikal",
+    "service3_title": "Tersedia 24/7",
+    "service3_desc": "Bantuan kecemasan tepi jalan sepanjang masa",
+    "contact_title": "Hubungi Kami",
+    "reach_us": "Hubungi Kami",
+    "phone": "Telefon",
+    "email": "Emel",
+    "location": "Lokasi",
+    "follow_us": "Ikuti Kami",
+    "cta_title": "Sedia Untuk Bermula?",
+    "cta_subtitle": "Hubungi kami hari ini untuk berbincang tentang keperluan tunda atau insurans anda",
+    "contact_now": "Hubungi Kami Sekarang"
+  },
+  "cta": {
+    "requestTow": "Mohon Tunda",
+    "eyebrow": "Dapatkan Bantuan",
+    "title": "Perlukan Bantuan?",
+    "subtitle": "Hubungi kami bila-bila masa. Kami berbahasa Inggeris, Thai, Melayu, dan Cina.",
+    "available": "Tersedia 24 jam, 7 hari seminggu",
+    "callNow": "Hubungi Sekarang",
+    "whatsapp": "WhatsApp Kami"
+  },
+  "coverage": {
+    "title": "Liputan Perkhidmatan",
+    "subtitle": "Kami beroperasi di Thailand, Malaysia, dan Singapura",
+    "base_note": "Pangkalan utama: Sadao, Thailand (berhampiran sempadan Malaysia)",
+    "radar_heading": "Liputan Merentas 3 Negara",
+    "radar_tagline": "Perkhidmatan tunda motosikal rentas sempadan dari Thailand ke Singapura"
+  },
+  "insurance": {
+    "title": "Perkhidmatan Insurans",
+    "subtitle": "Lindungi diri anda dengan insurans wajib dan sukarela untuk kereta dan motosikal",
+    "types_title": "Jenis Insurans",
+    "types_subtitle": "Kami menawarkan insurans wajib dan sukarela untuk perjalanan merentas sempadan",
+    "compulsory_title": "Insurans Wajib",
+    "compulsory_desc": "Diwajibkan oleh undang-undang untuk semua kenderaan yang memasuki Malaysia. Meliputi perbelanjaan perubatan sekiranya berlaku kemalangan.",
+    "compulsory_note": "Perlindungan untuk perbelanjaan perubatan sahaja",
+    "voluntary_title": "Insurans Sukarela",
+    "voluntary_desc": "Perlindungan tambahan untuk liabiliti pihak ketiga dan perlindungan kerosakan kenderaan.",
+    "voluntary_note": "Disyorkan untuk perjalanan jangka panjang",
+    "pricing_title": "Harga Insurans",
+    "pricing_subtitle": "Semua harga dalam Ringgit Malaysia (RM). Hubungi kami untuk kadar semasa.",
+    "motorcycle_title": "Insurans Motosikal",
+    "car_title": "Insurans Kereta",
+    "travel_title": "Insurans Perjalanan",
+    "cta_title": "Perlukan Bantuan Memilih Insurans?",
+    "cta_subtitle": "Hubungi kami untuk membincangkan perlindungan terbaik untuk perjalanan anda.",
+    "get_quote": "Dapatkan Sebut Harga"
+  },
+  "emergency": {
+    "whatsapp": "WhatsApp + Lokasi",
+    "call": "Hubungi Talian",
+    "whatsappLabel": "Hantar mesej WhatsApp dengan lokasi GPS anda",
+    "callLabel": "Hubungi talian kecemasan TMS",
+    "whatsappWithLocation": "KECEMASAN! Saya perlukan bantuan. Lokasi saya: {location}"
+  },
+  "seo": {
+    "routeTitle": "Perkhidmatan Tunda {origin} ke {destination} | TMS",
+    "routeDescription": "Perkhidmatan tunda motosikal dan kereta profesional dari {origin} ke {destination}. Perkhidmatan merentas sempadan 24/7 dengan bantuan dokumentasi. Hubungi TMS sekarang.",
+    "cityTitle": "Perkhidmatan Tunda di {city} | TMS Bike Towing",
+    "cityDescription": "Perkhidmatan tunda motosikal dan kereta profesional di {city}, {country}. Bantuan tepi jalan kecemasan 24/7. Hubungi TMS sekarang.",
+    "heroRoute": "Tunda dari {origin} ke {destination}",
+    "heroCity": "Perkhidmatan Tunda di {city}",
+    "serviceHighlights": "Kelebihan Perkhidmatan",
+    "distance": "Jarak",
+    "estimatedTime": "Anggaran Masa",
+    "relatedRoutes": "Laluan & Bandar Berkaitan",
+    "needHelp": "Perlukan Tunda?",
+    "needHelpDesc": "Hubungi kami bila-bila masa untuk perkhidmatan tunda kecemasan. Kami tersedia 24/7.",
+    "getQuote": "Dapatkan Sebut Harga",
+    "callNow": "Hubungi Sekarang",
+    "ourBase": "Pangkalan Kami",
+    "borderCrossing": "Pusat Sempadan",
+    "countries": {
+      "thailand": "Thailand",
+      "malaysia": "Malaysia",
+      "singapore": "Singapura"
+    },
+    "faq": {
+      "routeQ1": "Berapa lama masa untuk tunda dari {origin} ke {destination}?",
+      "routeA1": "Perjalanan biasanya mengambil masa {time}, bergantung pada trafik dan prosedur sempadan. Kami menguruskan semua dokumentasi.",
+      "routeQ2": "Adakah anda menguruskan kertas kerja kastam?",
+      "routeA2": "Ya, kami membantu dengan semua dokumentasi merentas sempadan termasuk permit kenderaan dan pelepasan kastam.",
+      "cityQ1": "Adakah anda menyediakan perkhidmatan tunda di {city}?",
+      "cityA1": "Ya, kami menawarkan perkhidmatan tunda 24/7 di {city} dan kawasan sekitar. Hubungi kami bila-bila masa.",
+      "cityQ2": "Berapa cepat anda boleh bertindak di {city}?",
+      "cityA2": "Kami berusaha tiba dalam 1-1.5 jam di kebanyakan kawasan. Masa respons mungkin berbeza."
+    }
+  },
+  "towing": {
+    "title": "Perkhidmatan Tunda",
+    "subtitle": "Perkhidmatan tunda motosikal dan kereta profesional di Thailand, Malaysia, dan Singapura",
+    "cta": "Mohon Tunda Sekarang",
+    "packages_title": "Pakej Tunda Thailand",
+    "packages_subtitle": "Beli pakej sebelum perjalanan untuk liputan tunda tanpa had di Thailand",
+    "whats_included": "Apa yang Termasuk",
+    "important": "Penting",
+    "crossborder_title": "Tunda Merentas Sempadan",
+    "crossborder_subtitle": "Kami mengangkut kenderaan antara Thailand, Malaysia, dan Singapura. Hubungi kami untuk sebut harga.",
+    "contact_for_quote": "Hubungi untuk sebut harga",
+    "get_quote": "Dapatkan Sebut Harga",
+    "cta_title": "Perlukan Tunda Kecemasan?",
+    "cta_subtitle": "Hubungi kami terus untuk bantuan segera"
+  }
+}

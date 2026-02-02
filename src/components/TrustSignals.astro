@@ -1,0 +1,64 @@
+---
+import { getLocaleFromUrl, type Locale } from "../i18n/utils";
+import { t } from "../i18n/translations";
+
+const locale = (Astro.currentLocale || getLocaleFromUrl(Astro.url)) as Locale;
+
+const signals = [
+  {
+    icon: "schedule",
+    value: "24/7",
+    labelKey: "trust.available_24",
+  },
+  {
+    icon: "verified",
+    value: "2,500+",
+    label: "Successful Tows",
+  },
+  {
+    icon: "public",
+    value: "3",
+    labelKey: "trust.cross_border",
+  },
+  {
+    icon: "speed",
+    value: "< 45m",
+    label: "Avg Response",
+  },
+];
+---
+
+<section class="border-y border-gray-100">
+  <div class="max-w-[1200px] mx-auto px-4 lg:px-8 py-8">
+    <div
+      class="flex flex-wrap items-center justify-center md:justify-between gap-8 md:gap-4 stagger-children"
+      id="trust-signals"
+    >
+      {
+        signals.map((signal, index) => (
+          <div
+            class="card-3d-glass px-6 py-4 flex items-center gap-4 hover:scale-105 transition-transform duration-300"
+            style={`transition-delay: ${index * 80}ms;`}
+          >
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary icon-jewel">
+              <span
+                class="material-symbols-outlined text-2xl icon-rotate-reveal text-[#1170FF]"
+                style={`transition-delay: ${index * 100 + 200}ms;`}
+              >
+                {signal.icon}
+              </span>
+            </div>
+            <div class="pop-in" style={`animation-delay: ${index * 100}ms;`}>
+              <span class="text-xl font-bold text-[#101418] tracking-tight block">
+                {signal.value}
+              </span>
+              <span class="block text-xs font-medium text-[#64748b]">
+                {signal.labelKey ? t(locale, signal.labelKey) : signal.label}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

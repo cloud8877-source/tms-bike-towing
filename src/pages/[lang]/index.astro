@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroV3 from "../../components/HeroV3.astro";
+import Services from "../../components/Services.astro";
+import TrustSignals from "../../components/TrustSignals.astro";
+import Testimonials from "../../components/Testimonials.svelte";
+import FAQ from "../../components/FAQ.svelte";
+import CoverageVideo from "../../components/CoverageVideo.svelte";
+import CTA from "../../components/CTA.astro";
+import {
+  locales,
+  getLocaleFromUrl,
+  getWhatsAppUrl,
+  type Locale,
+} from "../../i18n/utils";
+import { t, tArray } from "../../i18n/translations";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = getLocaleFromUrl(Astro.url) as Locale;
+
+const coverageAreas = [
+  { country: "Thailand", flag: "🇹🇭", cities: "Bangkok, Hua Hin, Surat Thani, Phuket, Hat Yai, Sadao" },
+  { country: "Malaysia", flag: "🇲🇾", cities: "Penang, Ipoh, KL, Melaka, Johor Bahru" },
+  { country: "Singapore", flag: "🇸🇬", cities: "Island-wide service" },
+];
+
+const faqItems = [
+  { question: t(locale, 'faq.q1'), answer: t(locale, 'faq.a1') },
+  { question: t(locale, 'faq.q2'), answer: t(locale, 'faq.a2') },
+  { question: t(locale, 'faq.q3'), answer: t(locale, 'faq.a3') },
+  { question: t(locale, 'faq.q4'), answer: t(locale, 'faq.a4') },
+];
+---
+
+<BaseLayout>
+  <HeroV3 />
+
+  <!-- Coverage Section - Video Background -->
+  <CoverageVideo
+    client:load
+    heading={t(locale, 'coverage.radar_heading')}
+    tagline={t(locale, 'coverage.radar_tagline')}
+  />
+
+  <!-- Country Coverage Cards -->
+  <section class="px-4 py-16 lg:px-8">
+    <div class="mx-auto w-full max-w-[1200px]">
+      <div class="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-3">
+        {coverageAreas.map((area, index) => (
+          <div
+            class="reveal-left rounded-2xl border border-gray-100 bg-gray-50 p-5 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+            style={`transition-delay: ${index * 80}ms;`}
+          >
+            <h4 class="mb-1 flex items-center justify-center gap-2 text-lg font-semibold text-text-main">
+              <span class="cursor-default text-2xl transition-transform hover:scale-110">{area.flag}</span> {area.country}
+            </h4>
+            <p class="text-sm text-text-secondary">{area.cities}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Services />
+
+  <TrustSignals />
+
+  <Testimonials client:visible title={t(locale, 'testimonials.title')} />
+  <FAQ
+    client:visible
+    items={faqItems}
+    title={t(locale, 'faq.title')}
+    subtitle={t(locale, 'faq.subtitle')}
+    ctaText={t(locale, 'faq.ctaText')}
+    ctaLabel={t(locale, 'faq.ctaLabel')}
+    ctaLink={t(locale, 'faq.ctaLink')}
+  />
+
+  <!-- CTA Section -->
+  <CTA locale={locale} />
+
+  <!-- Mobile SOS Button -->
+  <div class="fixed bottom-6 right-6 lg:hidden z-40">
+    <a
+      href={getWhatsAppUrl(locale)}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center shadow-2xl animate-pulse"
+      aria-label="Contact on WhatsApp"
+    >
+      <span class="material-symbols-outlined text-3xl">sos</span>
+    </a>
+  </div>
+</BaseLayout>
