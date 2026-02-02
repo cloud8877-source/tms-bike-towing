@@ -16,10 +16,11 @@ test.describe('Navigation', () => {
 
       test('language switcher is accessible', async ({ page }) => {
         await page.goto(`/${locale}/`);
-        const langSwitcher = page.getByRole('button', { name: /language|bahasa|语言|ภาษา/i });
+        // Use first() to select desktop language switcher (mobile is hidden on desktop viewport)
+        const langSwitcher = page.getByLabel('Select language').first();
         if (await langSwitcher.isVisible()) {
           await langSwitcher.click();
-          await expect(page.getByRole('menu')).toBeVisible();
+          await expect(page.getByRole('listbox')).toBeVisible();
         }
       });
     });
